@@ -834,11 +834,6 @@
           "name": "GITHUB_PERSONAL_ACCESS_TOKEN",
           "required": true,
           "secret": true
-        },
-        {
-          "description": "GitHub Enterprise Server hostname (optional)",
-          "name": "GH_HOST",
-          "required": false
         }
       ],
       "image": "ghcr.io/github/github-mcp-server:latest",
@@ -862,13 +857,6 @@
         },
         "read": [],
         "write": []
-      },
-      "provenance": {
-        "cert_issuer": "https://token.actions.githubusercontent.com",
-        "repository_uri": "https://github.com/github/github-mcp-server",
-        "runner_environment": "github-hosted",
-        "signer_identity": "/.github/workflows/docker-publish.yml",
-        "sigstore_url": "tuf-repo-cdn.sigstore.dev"
       },
       "repository_url": "https://github.com/github/github-mcp-server",
       "status": "Active",
@@ -2110,23 +2098,18 @@
       ],
       "transport": "stdio"
     },
-    "supabase": {
-      "args": [
-        "-y",
-        "@supabase/mcp-server-supabase@latest",
-        "--read-only",
-        "--project-ref=<project-ref>"
-      ],
-      "description": "MCP server for Supabase, providing database and project management capabilities via the Supabase MCP server.",
+    "postgres": {
+      "args": [],
+      "description": "MCP server for PostgreSQL, providing database management and query capabilities.",
       "env_vars": [
         {
-          "description": "Supabase personal access token",
-          "name": "SUPABASE_ACCESS_TOKEN",
+          "description": "PostgreSQL connection string",
+          "name": "POSTGRES_CONNECTION_STRING",
           "required": true,
           "secret": true
         }
       ],
-      "image": "@supabase/mcp-server-supabase@latest",
+      "image": "@modelcontextprotocol/server-postgres",
       "metadata": {
         "last_updated": "2025-07-16T00:22:36Z",
         "pulls": 0,
@@ -2143,10 +2126,10 @@
         "read": [],
         "write": []
       },
-      "repository_url": "https://github.com/supabase/mcp-server-supabase",
+      "repository_url": "https://github.com/modelcontextprotocol/servers",
       "status": "Active",
       "tags": [
-        "supabase",
+        "postgres",
         "database",
         "mcp",
         "server"
